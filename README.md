@@ -11,29 +11,12 @@ Firefox extension to remove recruitment agencies (and other specific companies) 
 
 ## Install
 
-### Temporary (for development/testing)
+```
+npm install
+npx web-ext run
+```
 
-1. Clone this repo
-2. Open Firefox and navigate to `about:debugging#/runtime/this-firefox`
-3. Click **Load Temporary Add-on...**
-4. Select the `manifest.json` file in the root of this repo
-5. Navigate to LinkedIn job search — the extension is now active
-
-> Note: Temporary add-ons are removed when Firefox closes.
-
-### Permanent (unsigned)
-
-1. Open Firefox and navigate to `about:config`
-2. Set `xpinstall.signatures.required` to `false` (Developer/Nightly editions only)
-3. Zip the extension files: `zip -r recruiter_blocker.xpi manifest.json src/`
-4. Open `about:addons`, click the gear icon, and select **Install Add-on From File...**
-5. Select the `.xpi` file
-
-### Permanent (signed via AMO)
-
-1. Create an account at [addons.mozilla.org](https://addons.mozilla.org)
-2. Submit the extension for signing
-3. Install the signed `.xpi` file via `about:addons`
+This launches Firefox with the extension loaded. It auto-reloads when you edit files.
 
 ## Usage
 
