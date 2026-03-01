@@ -1,0 +1,13 @@
+{
+  "name": "recruiter-blocker",
+  "version": "1.0.0",
+  "description": "Firefox extension to remove recruitment agencies from LinkedIn job search results",
+  "scripts": {
+    "test": "jest",
+    "test:watch": "jest --watch"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0"
+  }
+}

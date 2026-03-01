@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      width: 320px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 13px;
+      color: #333;
+      padding: 12px;
+    }
+    h1 {
+      font-size: 15px;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .count-badge {
+      background: #d32f2f;
+      color: #fff;
+      border-radius: 10px;
+      padding: 1px 7px;
+      font-size: 11px;
+      font-weight: 600;
+    }
+    .add-row {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 10px;
+    }
+    #company-input {
+      flex: 1;
+      padding: 6px 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 13px;
+    }
+    #company-input:focus { outline: none; border-color: #0a66c2; }
+    #add-btn {
+      padding: 6px 12px;
+      background: #0a66c2;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 600;
+    }
+    #add-btn:hover { background: #004182; }
+    #company-list {
+      list-style: none;
+      max-height: 280px;
+      overflow-y: auto;
+    }
+    #company-list li {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 6px 4px;
+      border-bottom: 1px solid #eee;
+    }
+    #company-list li.muted .company-name {
+      text-decoration: line-through;
+      color: #999;
+    }
+    .company-name { flex: 1; }
+    .actions { display: flex; gap: 4px; }
+    .actions button {
+      background: none;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      cursor: pointer;
+      width: 24px;
+      height: 24px;
+      font-size: 13px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #666;
+    }
+    .actions button:hover { background: #f0f0f0; }
+    .actions .remove-btn:hover { color: #d32f2f; border-color: #d32f2f; }
+    .empty-state {
+      text-align: center;
+      color: #999;
+      padding: 20px 0;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+  <h1>Recruiter Blocker <span class="count-badge" id="count">0</span></h1>
+  <div class="add-row">
+    <input id="company-input" type="text" placeholder="Company name to block..." />
+    <button id="add-btn">Block</button>
+  </div>
+  <ul id="company-list"></ul>
+
+  <script src="storage.js"></script>
+  <script src="popup-controller.js"></script>
+  <script>
+    const els = {
+      input: document.getElementById("company-input"),
+      addBtn: document.getElementById("add-btn"),
+      list: document.getElementById("company-list"),
+      count: document.getElementById("count"),
+    };
+    const storage = new Storage(browser);
+    const controller = new PopupController(els, storage);
+    controller.init();
+  </script>
+</body>
+</html>
